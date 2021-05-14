@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 1000000
+int sieve_Prime[MAX + 4] = { 0 },
+	sieve_count[MAX + 4] = { 0 };
+void form_sieve()
+{
+sieve_Prime[1] = 1;
+	for (int i = 2; i <= MAX; i++) {
+		if (sieve_Prime[i] == 0) {
+		for (int j = i * 2; j <= MAX; j += i) {
+				if (sieve_Prime[j] == 0) {
+					sieve_Prime[j] = 1;
+					sieve_count[i]++;
+				}
+			}
+		}
+	}
+}
+int main()
+{
+form_sieve();
+	int n = 2;
+	cout << "Count = " << (sieve_count[n] + 1) << endl;
+	n = 2;
+	cout << "Count = " << (sieve_count[n] + 1) << endl;
+  	n = 11 ;
+	cout << "Count = " << (sieve_count[n] + 1) << endl;
+	return 0;
+}
